@@ -11,6 +11,10 @@ scene.add(cube);
 
 camera.position.z = 5;
 
+var light = new Three.PointLight(0xffffff);
+light.position.set(0,100,-10);
+scene.add(light);
+
 var render = function() {
 	requestAnimationFrame(render);
 
