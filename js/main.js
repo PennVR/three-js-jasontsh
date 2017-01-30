@@ -36,9 +36,9 @@ for (var i = 0; i < plane.vertices.length; i++) {
 			plane.vertices[i].y);
 	}
 }
-var mountains = new THREE.Mesh(plane, new THREE.MeshBasicMaterial({color:0x00ff00}));
+var mountains = new THREE.Mesh(plane, new THREE.MeshLambertMaterial({color:0x00ff00}));
 scene.add(mountains);
-mountains.position = new THREE.Vector3(cube.position.x - 0.1, cube.position.y, cube.position.z);
+mountains.position = new THREE.Vector3(-10, 0, 0);
 render();
 
 function generateArray() {
@@ -88,6 +88,12 @@ function generateArray() {
 function noise(x, y) {
 	var nconst = 0x1000;
 	var bmconst = 0xff;
+	if (x % 1 == 0) {
+		x += 0.1;
+	}
+	if (y % 1 == 0) {
+		y += 0.1;
+	}
 	var t = x + nconst;
 	var bx0 = t & bmconst;
 	var bx1 = (bx0 + 1) & bmconst;
@@ -112,9 +118,9 @@ function noise(x, y) {
 	var sy = ry0*ry0*(3-2*ry0);
 
 	var q = g2[b00];
-	var u = rx0 * q[0] + ry0[0] * q[1];
+	var u = rx0 * q[0] + ry0 * q[1];
 	q = g2[b10];
-	var v = rx1 * q[0] + ry0[1] * q[1];
+	var v = rx1 * q[0] + ry0 * q[1];
 	var a = u + sx *(v-u);
 
 	q = g2[b01];
