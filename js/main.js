@@ -38,7 +38,7 @@ for (var i = 0; i < plane.vertices.length; i++) {
 }
 var mountains = new THREE.Mesh(plane, new THREE.MeshBasicMaterial({color:0x00ff00}));
 scene.add(mountains);
-mountains.position = new THREE.Vector3(-10, 0, 0);
+mountains.position = new THREE.Vector3(-2, 0, 30);
 render();
 
 function generateArray() {
