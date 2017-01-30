@@ -36,7 +36,7 @@ for (var i = 0; i < plane.vertices.length; i++) {
 			plane.vertices[i].y);
 	}
 }
-var mountains = new THREE.mesh(plane, new THREE.MeshLamberMaterail({color:0x888888}));
+var mountains = new THREE.mesh(plane, new THREE.MeshLambertMaterial({color:0x888888}));
 scene.add(mountains);
 mountains.position = new THREE.Vector3(-10, 0, 0);
 render();
