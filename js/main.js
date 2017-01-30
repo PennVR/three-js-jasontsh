@@ -39,7 +39,7 @@ for (var i = 0; i < plane.vertices.length; i++) {
 var mountains = new THREE.Mesh(plane, new THREE.MeshLambertMaterial({color:0x00ff00}));
 scene.add(mountains);
 mountains.position = new THREE.Vector3(-50, -20, 0);
-mountains.rotation.z = 1;
+mountains.rotation.x = 1;
 render();
 
 function generateArray() {
