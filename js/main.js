@@ -62,6 +62,9 @@ function generateArray() {
 	for (i = 0; i < bconst + 2; i++) {
 		p[bconst + i] = p[i];
 		for (j = 0; j < 2; j++) {
+			if (g2[bconst + i] == undefined) {
+				g2[bconst + i] = [];
+			}
 			g2[bconst + i][j] = g2[i][j];
 		}
 	}
