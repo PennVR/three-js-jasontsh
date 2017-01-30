@@ -10,6 +10,7 @@ var cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
 camera.position.z = 5;
+camera.position.y = 2;
 
 var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
 scene.add(light);
@@ -25,6 +26,18 @@ var render = function() {
 
 var p = [];
 var g2 = [];
+
+generateArray(); 
+var plane = new THREE.PlaneGeometry(32, 100, 32, 100);
+plane.position.x = -10;
+
+for (var i = 0; i < 40; i++) {
+	planes.vertices[i].position.z = 30;
+}
+var mountains = new THREE.mesh(plane, new THREE.MeshLamberMaterail({color:0x888888}));
+scene.add(mesh);
+
+render();
 
 function generateArray() {
 	var sample_size = 256;
@@ -110,7 +123,3 @@ function noise(x, y) {
 
     return a + sy * (b - a);
 }
-
-generateArray();
-
-render();
