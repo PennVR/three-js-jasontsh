@@ -31,7 +31,7 @@ generateArray();
 var plane = new THREE.PlaneGeometry(32, 100, 32, 100);
 
 for (var i = 0; i < 40; i++) {
-	planes.vertices[i].position.z = 30;
+	plane.vertices[i].position.z = 30;
 }
 var mountains = new THREE.mesh(plane, new THREE.MeshLamberMaterail({color:0x888888}));
 scene.add(mountains);
