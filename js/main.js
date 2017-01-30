@@ -112,9 +112,9 @@ function noise(x, y) {
 	var sy = ry0*ry0*(3-2*ry0);
 
 	var q = g2[b00];
-	var u = rx0 * q[0] + ry[0] * q[1];
+	var u = rx0 * q[0] + ry0[0] * q[1];
 	q = g2[b10];
-	var v = rx1 * q[0] + ry[1] * q[1];
+	var v = rx1 * q[0] + ry0[1] * q[1];
 	var a = u + sx *(v-u);
 
 	q = g2[b01];
