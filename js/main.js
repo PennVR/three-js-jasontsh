@@ -29,14 +29,13 @@ var g2 = [];
 
 generateArray(); 
 var plane = new THREE.PlaneGeometry(32, 100, 32, 100);
-plane.position.x = -10;
 
 for (var i = 0; i < 40; i++) {
 	planes.vertices[i].position.z = 30;
 }
 var mountains = new THREE.mesh(plane, new THREE.MeshLamberMaterail({color:0x888888}));
-scene.add(mesh);
-
+scene.add(mountains);
+mountains.position = new THREE.Vector3(-10, 0, 0);
 render();
 
 function generateArray() {
