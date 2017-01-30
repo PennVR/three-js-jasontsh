@@ -31,7 +31,7 @@ generateArray();
 var plane = new THREE.PlaneGeometry(10, 10, 32, 100);
 
 for (var i = 0; i < plane.vertices.length; i++) {
-	if (plane.vertices[i].x < 30) {
+	if (plane.vertices[i].x < 25) {
 		plane.vertices[i].z = noise(plane.vertices[i].x, 
 			plane.vertices[i].y);
 	}
@@ -89,12 +89,6 @@ function generateArray() {
 function noise(x, y) {
 	var nconst = 0x1000;
 	var bmconst = 0xff;
-	if (x % 1 == 0) {
-		x += 0.1;
-	}
-	if (y % 1 == 0) {
-		y += 0.1;
-	}
 	var t = x + nconst;
 	var bx0 = t & bmconst;
 	var bx1 = (bx0 + 1) & bmconst;
