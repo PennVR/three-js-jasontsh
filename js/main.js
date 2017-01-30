@@ -30,8 +30,11 @@ var g2 = [];
 generateArray(); 
 var plane = new THREE.PlaneGeometry(32, 100, 32, 100);
 
-for (var i = 0; i < 40; i++) {
-	plane.vertices[i].position.z = 30;
+for (var i = 0; i < plane.vertices.length; i++) {
+	if (plane.vertices[i].position.x < 30) {
+		plane.vertices[i].position.z = noise(plane.vertices[i].position.x, 
+			plane.vertices[i].position.y);
+	}
 }
 var mountains = new THREE.mesh(plane, new THREE.MeshLamberMaterail({color:0x888888}));
 scene.add(mountains);
