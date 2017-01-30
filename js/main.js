@@ -28,7 +28,7 @@ var p = [];
 var g2 = [];
 
 generateArray(); 
-var plane = new THREE.PlaneGeometry(32, 100, 32, 100);
+var plane = new THREE.PlaneGeometry(10, 10, 32, 100);
 
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 30) {
