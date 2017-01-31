@@ -10,7 +10,6 @@ var cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
 camera.position.z = 5;
-camera.position.y = 2;
 
 var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
 scene.add(light);
@@ -28,20 +27,34 @@ var p = [];
 var g2 = [];
 
 generateArray(); 
-var plane = new THREE.PlaneGeometry(10, 10, 32, 100);
+var plane = new THREE.PlaneGeometry(10, 100, 32, 30);
 
 for (var i = 0; i < plane.vertices.length; i++) {
-	if (plane.vertices[i].x < 25) {
+	if (plane.vertices[i].x < 4.5) {
 		plane.vertices[i].z = noise(plane.vertices[i].x, 
 			plane.vertices[i].y);
 	}
 }
-var mountains = new THREE.Mesh(plane, new THREE.MeshLambertMaterial({color:0x00ff00}));
-scene.add(mountains);
-mountains.position = new THREE.Vector3(-100, -20, 0);
-mountains.rotation.x = -1;
-render();
+var left_mountains = new THREE.Mesh(plane, new THREE.MeshLambertMaterial({color:0x00dddd}));
+scene.add(left_mountains);
+left_mountains.position.x = -8;
+left_mountains.rotation.x = -1;
 
+generateArray(); 
+var right_plane = new THREE.PlaneGeometry(10, 100, 32, 30);
+
+for (var i = 0; i < right_plane.vertices.length; i++) {
+	if (right_plane.vertices[i].x > -4.5) {
+		right_plane.vertices[i].z = noise(right_plane.vertices[i].x, 
+			right_plane.vertices[i].y);
+	}
+}
+var right_mountains = new THREE.Mesh(right_plane, new THREE.MeshLambertMaterial({color:0x00aaaa}));
+scene.add(right_mountains);
+right_mountains.position.x = 8;
+right_mountains.rotation.x = -1;
+
+render();
 function generateArray() {
 	var sample_size = 256;
 	var bconst = 0x1000;
