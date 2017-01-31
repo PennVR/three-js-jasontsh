@@ -1,26 +1,29 @@
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100);
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+
+var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
+light.position.set( 0.5, 30, 0.75 );
+scene.add(light);
 
 var geometry = new THREE.BoxGeometry(1, 1, 1);
 var material = new THREE.MeshBasicMaterial({color:0x00ff00});
 var cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
+renderer.setClearColor(0x3399ff);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
 camera.position.z = 5;
 camera.position.y = 2;
-
-var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
-scene.add(light);
 
 var render = function() {
 	requestAnimationFrame(render);
 
 	cube.rotation.x += 0.1;
 	cube.rotation.y += 0.1;
-	camera.position.z -= 0.1;
+	camera.position.z -= 0.04;
 
 	renderer.render(scene, camera);
 };
@@ -29,7 +32,7 @@ var p = [];
 var g2 = [];
 
 generateArray(); 
-var plane = new THREE.PlaneGeometry(10, 1000, 25, 800);
+var plane = new THREE.PlaneGeometry(10, 1000, 25, 577);
 
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 4.5) {
@@ -40,10 +43,16 @@ for (var i = 0; i < plane.vertices.length; i++) {
 		}
 	}
 }
-var left_mountains = new THREE.Mesh(plane, new THREE.MeshLambertMaterial({color:0x00dddd}));
-scene.add(left_mountains);
-left_mountains.position.x = -8;
-left_mountains.rotation.x = -Math.PI / 2;
+
+var loader = new THREE.TextureLoader();
+  // URL of texture
+loader.load("grass.jpg", function(texture){
+var left_mountains = new THREE.Mesh(plane, new THREE.MeshBasicMaterial({color:0x00dddd, map: texture}));
+	scene.add(left_mountains);
+	left_mountains.position.x = -8;
+	left_mountains.rotation.x = -Math.PI / 2;
+});
+
 
 generateArray(); 
 var right_plane = new THREE.PlaneGeometry(10, 1000, 25, 800);
@@ -57,7 +66,7 @@ for (var i = 0; i < right_plane.vertices.length; i++) {
 		}
 	}
 }
-var right_mountains = new THREE.Mesh(right_plane, new THREE.MeshLambertMaterial({color:0x00aaaa}));
+var right_mountains = new THREE.Mesh(right_plane, new THREE.MeshBasicMaterial({color:0x00aaaa, map: texture}));
 scene.add(right_mountains);
 right_mountains.position.x = 8;
 right_mountains.rotation.x = -Math.PI / 2;
