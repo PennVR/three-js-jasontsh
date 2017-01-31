@@ -32,7 +32,7 @@ var p = [];
 var g2 = [];
 
 generateArray(); 
-var plane = new THREE.PlaneGeometry(10, 100, 256, 256);
+var plane = new THREE.PlaneGeometry(30, 200, 256, 256);
 
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 4.5) {
