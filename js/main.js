@@ -6,11 +6,6 @@ var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 light.position.set( 0.5, 30, 0.75 );
 scene.add(light);
 
-var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshBasicMaterial({color:0x00ff00});
-var cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
-
 renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -18,21 +13,11 @@ document.body.appendChild(renderer.domElement);
 camera.position.z = 5;
 camera.position.y = 2;
 
-var render = function() {
-	requestAnimationFrame(render);
-
-	cube.rotation.x += 0.1;
-	cube.rotation.y += 0.1;
-	camera.position.z -= 0.02;
-
-	renderer.render(scene, camera);
-};
-
 var p = [];
 var g2 = [];
 
 generateArray(); 
-var plane = new THREE.PlaneGeometry(60, 500, 256, 256);
+var plane = new THREE.PlaneGeometry(60, 300, 256, 256);
 
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 29.5) {
@@ -56,7 +41,7 @@ loader.load("grass.jpg", function(texture){
 
 
 generateArray(); 
-var right_plane = new THREE.PlaneGeometry(60, 500, 256, 256);
+var right_plane = new THREE.PlaneGeometry(60, 300, 256, 256);
 
 for (var i = 0; i < right_plane.vertices.length; i++) {
 	if (right_plane.vertices[i].x > -29.5) {
