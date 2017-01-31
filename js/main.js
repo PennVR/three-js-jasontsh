@@ -40,9 +40,6 @@ for (var i = 0; i < plane.vertices.length; i++) {
 			Math.abs(plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (plane.vertices[i].z < 0) {
 			plane.vertices[i].z = 0;
-			if (plane.vertices[i-256] && plane.vertices[i+256]) {
-				plane.vertices[i].z = (plane.vertices[i-256].z + plane.vertices[i+256].z)/2;
-			}
 		}
 	}
 }
@@ -67,9 +64,6 @@ for (var i = 0; i < right_plane.vertices.length; i++) {
 			Math.abs(right_plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (right_plane.vertices[i].z < 0) {
 			right_plane.vertices[i].z = 0;
-			if (right_plane.vertices[i-256] && right_plane.vertices[i+256]) {
-				right_plane.vertices[i].z = (right_plane.vertices[i-256].z + right_plane.vertices[i+256].z)/2;
-			}
 		}
 	}
 }
