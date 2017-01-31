@@ -40,8 +40,8 @@ for (var i = 0; i < plane.vertices.length; i++) {
 			Math.abs(plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (plane.vertices[i].z < 0) {
 			plane.vertices[i].z = 0;
-			if (plane.vertices[i-1] && plane.vertices[i+1]) {
-				plane.vertices[i].z = (plane.vertices[i-1].z + plane.vertices[i+1].z)/2;
+			if (plane.vertices[i-256] && plane.vertices[i+256]) {
+				plane.vertices[i].z = (plane.vertices[i-256].z + plane.vertices[i+256].z)/2;
 			}
 		}
 	}
