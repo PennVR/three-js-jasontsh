@@ -13,6 +13,15 @@ document.body.appendChild(renderer.domElement);
 camera.position.z = 5;
 camera.position.y = 2;
 
+var render = function() {
+	requestAnimationFrame(render);
+	if (camera.position.z > -290){
+		camera.position.z -= 0.02;
+	}
+
+	renderer.render(scene, camera);
+};
+
 var p = [];
 var g2 = [];
 
