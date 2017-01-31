@@ -6,6 +6,8 @@ var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 light.position.set( 0.5, 30, 0.75 );
 scene.add(light);
 
+var sky = new THREE.sky();
+scene.add(sky.mesh);
 renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -13,10 +15,17 @@ document.body.appendChild(renderer.domElement);
 camera.position.z = 5;
 camera.position.y = 2;
 
+var fireworks = [];
+var prob;
+
 var render = function() {
 	requestAnimationFrame(render);
 	if (camera.position.z > -290){
 		camera.position.z -= 0.02;
+	}
+
+	prob = (10.0 - 3.0 * fireworks.length) / 100.0;
+	if (Math.random() < prob && prob > 0) {
 	}
 
 	renderer.render(scene, camera);
@@ -70,6 +79,7 @@ loader.load("grass.jpg", function(texture){
 	right_mountains.position.x = 37;
 	right_mountains.rotation.x = -Math.PI / 2;
 });
+
 
 render();
 function generateArray() {
