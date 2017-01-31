@@ -37,10 +37,8 @@ var plane = new THREE.PlaneGeometry(30, 200, 256, 256);
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 4.5) {
 		plane.vertices[i].z = noise(Math.abs(plane.vertices[i].x)*256.0/10.0, 
-			plane.vertices[i].y*256.0/1000.0) * 7;
-		if (plane.vertices[i].z < 0) {
-			plane.vertices[i].z = 0;
-		}
+			Math.abs(plane.vertices[i].y) *256.0/1000.0) * 7;
+		
 	}
 }
 
