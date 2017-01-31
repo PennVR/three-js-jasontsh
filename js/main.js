@@ -35,7 +35,7 @@ generateArray();
 var plane = new THREE.PlaneGeometry(60, 500, 256, 256);
 
 for (var i = 0; i < plane.vertices.length; i++) {
-	if (plane.vertices[i].x < 4.5) {
+	if (plane.vertices[i].x < 29.5) {
 		plane.vertices[i].z = noise(Math.abs(plane.vertices[i].x)*256.0/10.0, 
 			Math.abs(plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (plane.vertices[i].z < 0) {
@@ -53,7 +53,7 @@ loader.load("grass.jpg", function(texture){
 	var left_mountains = new THREE.Mesh(plane, 
 		new THREE.MeshBasicMaterial({color:0x00dddd, map: texture}));
 	scene.add(left_mountains);
-	left_mountains.position.x = -58;
+	left_mountains.position.x = -38;
 	left_mountains.rotation.x = -Math.PI / 2;
 });
 
@@ -62,7 +62,7 @@ generateArray();
 var right_plane = new THREE.PlaneGeometry(60, 500, 256, 256);
 
 for (var i = 0; i < right_plane.vertices.length; i++) {
-	if (right_plane.vertices[i].x > -4.5) {
+	if (right_plane.vertices[i].x > -29.5) {
 		right_plane.vertices[i].z = noise(Math.abs(right_plane.vertices[i].x)*256.0/10.0, 
 			Math.abs(right_plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (right_plane.vertices[i].z < 0) {
@@ -79,7 +79,7 @@ loader.load("grass.jpg", function(texture){
 	var right_mountains = new THREE.Mesh(right_plane, 
 		new THREE.MeshBasicMaterial({color:0x00aaaa, map: texture}));
 	scene.add(right_mountains);
-	right_mountains.position.x = 58;
+	right_mountains.position.x = 38;
 	right_mountains.rotation.x = -Math.PI / 2;
 });
 
