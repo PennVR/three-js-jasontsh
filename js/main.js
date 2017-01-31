@@ -50,7 +50,7 @@ loader.load("grass.jpg", function(texture){
 	var left_mountains = new THREE.Mesh(plane, 
 		new THREE.MeshBasicMaterial({color:0x00dddd, map: texture}));
 	scene.add(left_mountains);
-	left_mountains.position.x = -38;
+	left_mountains.position.x = -37;
 	left_mountains.rotation.x = -Math.PI / 2;
 });
 
@@ -73,7 +73,7 @@ loader.load("grass.jpg", function(texture){
 	var right_mountains = new THREE.Mesh(right_plane, 
 		new THREE.MeshBasicMaterial({color:0x00aaaa, map: texture}));
 	scene.add(right_mountains);
-	right_mountains.position.x = 38;
+	right_mountains.position.x = 37;
 	right_mountains.rotation.x = -Math.PI / 2;
 });
 
