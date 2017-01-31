@@ -32,12 +32,12 @@ var p = [];
 var g2 = [];
 
 generateArray(); 
-var plane = new THREE.PlaneGeometry(10, 1000, 39, 577);
+var plane = new THREE.PlaneGeometry(10, 1000, 256, 256);
 
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 4.5) {
-		plane.vertices[i].z = noise(plane.vertices[i].x, 
-			plane.vertices[i].y) * 7;
+		plane.vertices[i].z = noise(Math.abs(plane.vertices[i].x)*256.0/10.0, 
+			Math.abs(plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (plane.vertices[i].z < 0) {
 			plane.vertices[i].z = 0;
 		}
