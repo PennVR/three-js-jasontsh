@@ -38,8 +38,8 @@ var plane = new THREE.PlaneGeometry(60, 300, 256, 256);
 
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 29.5) {
-		plane.vertices[i].z = noise(Math.abs(plane.vertices[i].x)*256.0/60.0, 
-			Math.abs(plane.vertices[i].y)*256.0/300.0) * 7;
+		plane.vertices[i].z = noise(Math.abs(plane.vertices[i].x)*256.0/10.0, 
+			Math.abs(plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (plane.vertices[i].z < 0) {
 			plane.vertices[i].z = 0;
 		}
@@ -62,8 +62,8 @@ var right_plane = new THREE.PlaneGeometry(60, 300, 256, 256);
 
 for (var i = 0; i < right_plane.vertices.length; i++) {
 	if (right_plane.vertices[i].x > -29.5) {
-		right_plane.vertices[i].z = noise(Math.abs(right_plane.vertices[i].x)*256.0/60.0, 
-			Math.abs(right_plane.vertices[i].y)*256.0/300.0) * 7;
+		right_plane.vertices[i].z = noise(Math.abs(right_plane.vertices[i].x)*256.0/10.0, 
+			Math.abs(right_plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (right_plane.vertices[i].z < 0) {
 			right_plane.vertices[i].z = 0;
 		}
