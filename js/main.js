@@ -56,7 +56,7 @@ var render = function() {
 		spherebuffer.position.x += fireworks[i][0];
 		spherebuffer.position.y += fireworks[i][1];
 		spherebuffer.position.z += fireworks[i][2];
-		if (spherebuffer.position.y > 200) {
+		if (spherebuffer.position.y > 15) {
 			scene.remove(spherebuffer);
 			fireworks.splice(fireworks[i], 1);
 		}
