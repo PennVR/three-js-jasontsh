@@ -34,7 +34,7 @@ var p = [];
 var g2 = [];
 
 generateArray(); 
-var plane = new THREE.PlaneGeometry(60, 300, 256, 256);
+var plane = new THREE.PlaneGeometry(200, 300, 256, 256);
 
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 29.5) {
@@ -58,7 +58,7 @@ loader.load("grass.jpg", function(texture){
 
 
 generateArray(); 
-var right_plane = new THREE.PlaneGeometry(60, 300, 256, 256);
+var right_plane = new THREE.PlaneGeometry(200, 300, 256, 256);
 
 for (var i = 0; i < right_plane.vertices.length; i++) {
 	if (right_plane.vertices[i].x > -29.5) {
