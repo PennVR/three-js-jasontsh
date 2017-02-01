@@ -15,6 +15,7 @@ sunSphere = new THREE.Mesh(
 sunSphere.position.y = - 700000;
 sunSphere.visible = false;
 scene.add( sunSphere );
+renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -23,7 +24,8 @@ camera.position.y = 2;
 
 var fireworks = [];
 var prob;
-
+var x, y, z, dx, dy;
+var spherebuffer;
 var render = function() {
 	requestAnimationFrame(render);
 	if (camera.position.z > -290){
@@ -32,7 +34,31 @@ var render = function() {
 
 	prob = (10.0 - 3.0 * fireworks.length) / 100.0;
 	if (Math.random() < prob && prob > 0) {
-
+		x = Math.random() * 300 + 20;
+		if (Math.random() > 0.5) {
+			x *= -1;
+		}
+		y = Math.random() * 70 + 10;
+		dx = Math.random();
+		dy = Math.random() * 50 + 50;
+		dz = Math.random();
+		var spheregeo = new SphereBufferGeometry(0.1, 0.1, 0.1);
+		var sphere = new THREE.Mesh(spheregeo, new MeshBasicMaterial({color: 0xaaaaaa}));
+		sphere.position.x = x;
+		sphere.position.y = y;
+		sphere.position.z = z;
+		screne.put(sphere);
+		fireworks.push([dx, dy, dz, sphere]);
+	}
+	for (var i = 0; i < fireworks.length; i++) {
+		spherebuffer = fireworks[i][3];
+		spherebuffer.position.x += fireworks[i][0];
+		spherebuffer.position.y += fireworks[i][1];
+		spherebuffer.position.z += fireworks[i][2];
+		if (spherebuffer.position.y > 200) {
+			scene.remove(spherebuffer);
+			fireworks.splice(fireworks[i], 1);
+		}
 	}
 
 	renderer.render(scene, camera);
