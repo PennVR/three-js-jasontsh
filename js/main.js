@@ -40,7 +40,7 @@ var render = function() {
 		}
 		y = Math.random() * 2 + 7;
 		dx = Math.random();
-		dy = Math.random() * 2 + 1;
+		dy = 0.5;
 		z = Math.random() * -110 + camera.position.z;
 		dz = Math.random();
 		var spheregeo = new THREE.SphereBufferGeometry(1, 30, 30);
