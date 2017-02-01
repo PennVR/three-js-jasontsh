@@ -47,7 +47,7 @@ var render = function() {
 		sphere.position.x = x;
 		sphere.position.y = y;
 		sphere.position.z = z;
-		scene.put(sphere);
+		scene.add(sphere);
 		fireworks.push([dx, dy, dz, sphere]);
 	}
 	for (var i = 0; i < fireworks.length; i++) {
