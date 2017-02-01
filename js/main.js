@@ -86,7 +86,7 @@ var render = function() {
 				spherebuffer.position.z += splash[i][j][2];
 			}
 		}
-		splash[i][0]++;
+		splash[i][0] += 1;
 	}
 
 	renderer.render(scene, camera);
