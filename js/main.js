@@ -40,10 +40,10 @@ var render = function() {
 		}
 		y = Math.random() * 4;
 		dx = Math.random();
-		dy = Math.random() * 5;
+		dy = Math.random() * 2 + 2;
 		z = Math.random() * -100 + camera.position.z;
 		dz = Math.random();
-		var spheregeo = new THREE.SphereBufferGeometry(2, 2, 2);
+		var spheregeo = new THREE.SphereBufferGeometry(1, 30, 30);
 		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0xaaaaaa}));
 		sphere.position.x = x;
 		sphere.position.y = y;
