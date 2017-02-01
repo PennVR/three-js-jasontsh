@@ -75,7 +75,7 @@ loader.load("grass.jpg", function(texture){
 	var right_mountains = new THREE.Mesh(right_plane, 
 		new THREE.MeshBasicMaterial({color:0x00aaaa, map: texture}));
 	scene.add(right_mountains);
-	right_mountains.position.x = 148;
+	right_mountains.position.x = 155;
 	right_mountains.rotation.x = -Math.PI / 2;
 });
 
