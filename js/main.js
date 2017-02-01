@@ -38,9 +38,9 @@ var render = function() {
 		if (Math.random() > 0.5) {
 			x *= -1;
 		}
-		y = Math.random() * 70;
+		y = Math.random() * 4;
 		dx = Math.random();
-		dy = Math.random() * 50 + 50;
+		dy = Math.random() * 5;
 		z = Math.random() * -100 + camera.position.z;
 		dz = Math.random();
 		var spheregeo = new THREE.SphereBufferGeometry(2, 2, 2);
@@ -54,7 +54,7 @@ var render = function() {
 	for (var i = 0; i < fireworks.length; i++) {
 		spherebuffer = fireworks[i][3];
 		spherebuffer.position.x += fireworks[i][0];
-		spherebuffer.position.y += fireworks[i][1] - 40;
+		spherebuffer.position.y += fireworks[i][1];
 		spherebuffer.position.z += fireworks[i][2];
 		if (spherebuffer.position.y > 200) {
 			scene.remove(spherebuffer);
