@@ -66,7 +66,7 @@ var render = function() {
 				splashes[j] = [Math.random() * 0.1 + fireworks[i][3].position.x, 
 				Math.random() * 0.2 + fireworks[i][3].position.y, 
 				Math.random() * 0.1 + fireworks[i][3].position.z,
-				new THREE.Mesh(new THREE.SphereBufferGeometry(-0.01 * fireworks[i][3].position.z, 30, 30), 
+				new THREE.Mesh(new THREE.SphereBufferGeometry(100, 30, 30), 
 					new THREE.MeshBasicMaterial({color: 0xaaaaaa}))];
 				scene.add(splashes[j][3]);
 				splashes[j][3].position.x = fireworks[i][3].position.x;
