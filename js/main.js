@@ -34,10 +34,10 @@ var p = [];
 var g2 = [];
 
 generateArray(); 
-var plane = new THREE.PlaneGeometry(60, 300, 256, 256);
+var plane = new THREE.PlaneGeometry(300, 300, 256, 256);
 
 for (var i = 0; i < plane.vertices.length; i++) {
-	if (plane.vertices[i].x < 29.5) {
+	if (plane.vertices[i].x < 149.5) {
 		plane.vertices[i].z = noise(Math.abs(plane.vertices[i].x)*256.0/10.0, 
 			Math.abs(plane.vertices[i].y)*256.0/1000.0) * 7;
 		if (plane.vertices[i].z < 0) {
@@ -52,7 +52,7 @@ loader.load("grass.jpg", function(texture){
 	var left_mountains = new THREE.Mesh(plane, 
 		new THREE.MeshBasicMaterial({color:0x00dddd, map: texture}));
 	scene.add(left_mountains);
-	left_mountains.position.x = -37;
+	left_mountains.position.x = -155;
 	left_mountains.rotation.x = -Math.PI / 2;
 });
 
