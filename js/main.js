@@ -8,6 +8,13 @@ scene.add(light);
 
 var sky = new THREE.Sky();
 scene.add(sky.mesh);
+sunSphere = new THREE.Mesh(
+	new THREE.SphereBufferGeometry( 20000, 16, 8 ),
+	new THREE.MeshBasicMaterial( { color: 0xffffff } )
+);
+sunSphere.position.y = - 700000;
+sunSphere.visible = false;
+scene.add( sunSphere );
 renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
