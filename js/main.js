@@ -54,7 +54,7 @@ var render = function() {
 	for (var i = 0; i < fireworks.length; i++) {
 		spherebuffer = fireworks[i][3];
 		spherebuffer.position.x += fireworks[i][0];
-		spherebuffer.position.y += fireworks[i][1];
+		spherebuffer.position.y += fireworks[i][1] - 40;
 		spherebuffer.position.z += fireworks[i][2];
 		if (spherebuffer.position.y > 200) {
 			scene.remove(spherebuffer);
