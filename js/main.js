@@ -77,6 +77,7 @@ var render = function() {
 			for (j = 1; j < splash[i].length; j++) {
 				scene.remove(splash[i][j][3]);
 			}
+			splash.splice(splash[i], 1);
 		} else {
 			for (j = 1; j < splash[i].length; j++) {
 				spherebuffer = splash[i][j][3];
@@ -85,6 +86,7 @@ var render = function() {
 				spherebuffer.position.z += splash[i][j][2];
 			}
 		}
+		splash[i][0]++;
 	}
 
 	renderer.render(scene, camera);
