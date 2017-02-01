@@ -38,7 +38,7 @@ var render = function() {
 		if (Math.random() > 0.5) {
 			x *= -1;
 		}
-		y = Math.random() * 70 + 10;
+		y = Math.random() * 70;
 		dx = Math.random();
 		dy = Math.random() * 50 + 50;
 		z = Math.random() * -100 + camera.position.z;
