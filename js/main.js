@@ -6,6 +6,8 @@ var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 light.position.set( 0.5, 30, 0.75 );
 scene.add(light);
 
+var sky = new THREE.Sky();
+scene.add(sky.mesh);
 renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
