@@ -79,19 +79,19 @@ var render = function() {
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0][3] && (splash[i][0][3].position.y > 80 || splash[i][0][3].position.y < 4)) {
-			for (j = 0; j < splash[i].length; j++) {
-				scene.remove(splash[i][j][3]);
-			}
-			splash.splice(splash[i], 1);
-		} else {
+		// if (splash[i][0][3] && (splash[i][0][3].position.y > 80 || splash[i][0][3].position.y < 4)) {
+		// 	for (j = 0; j < splash[i].length; j++) {
+		// 		scene.remove(splash[i][j][3]);
+		// 	}
+		// 	splash.splice(splash[i], 1);
+		// } else {
 			for (j = 0; j < splash[i].length; j++) {
 				spherebuffer = splash[i][j][3];
 				spherebuffer.position.x += splash[i][j][0];
 				spherebuffer.position.y += splash[i][j][1];
 				spherebuffer.position.z += splash[i][j][2];
 			}
-		}
+		// }
 	}
 
 	renderer.render(scene, camera);
