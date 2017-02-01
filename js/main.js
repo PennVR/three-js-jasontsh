@@ -55,15 +55,16 @@ var render = function() {
 	for (var i = 0; i < fireworks.length; i++) {
 		spherebuffer = fireworks[i][3];
 		spherebuffer.position.x += fireworks[i][0];
-		spherebuffer.position.y += fireworks[i][1] - 0.05;
+		spherebuffer.position.y += fireworks[i][1];
 		spherebuffer.position.z += fireworks[i][2];
+		fireworks[i][1] = fireworks[i][1] - 0.05;
 		if (spherebuffer.position.y > 40 || fireworks[i][1] <= 0) {
 			scene.remove(spherebuffer);
 			fireworks.splice(fireworks[i], 1);
 			var splashes = [];
 			splashes[0] = 0;
 			for (var j = 0; j < Math.random()*3 + 7; j++){
-				splashes[j+1] = [Math.random() * 0.2, Math.random() * 0.4, Math.random() * 0.2,
+				splashes[j+1] = [Math.random() * 0.1, Math.random() * 0.2, Math.random() * 0.1,
 				new THREE.Mesh(new THREE.SphereBufferGeometry(0.01, 30, 30), 
 					new THREE.MeshBasicMaterial({color: 0xaaaaaa}))];
 				scene.add(splashes[j+1][3]);
