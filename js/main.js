@@ -44,7 +44,7 @@ var render = function() {
 		dy = 0.5;
 		z = Math.random() * - 110;
 		dz = Math.random();
-		var spheregeo = new THREE.SphereBufferGeometry(-0.03 * z, 30, 30);
+		var spheregeo = new THREE.SphereBufferGeometry(-0.02 * z, 30, 30);
 		z += camera.position.z;
 		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0xaaaaaa}));
 		sphere.position.x = x;
@@ -77,7 +77,7 @@ var render = function() {
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0] > 50) {
+		if (splash[i][0] > 1000) {
 			for (j = 1; j < splash[i].length; j++) {
 				scene.remove(splash[i][j][3]);
 			}
