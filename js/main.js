@@ -57,7 +57,7 @@ var render = function() {
 		spherebuffer.position.x += fireworks[i][0];
 		spherebuffer.position.y += fireworks[i][1] - 0.05;
 		spherebuffer.position.z += fireworks[i][2];
-		if (spherebuffer.position.y > 15 || fireworks[i][1] <= 0) {
+		if (spherebuffer.position.y > 40 || fireworks[i][1] <= 0) {
 			scene.remove(spherebuffer);
 			fireworks.splice(fireworks[i], 1);
 			var splashes = [];
@@ -73,7 +73,7 @@ var render = function() {
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0] > 15) {
+		if (splash[i][0] > 50) {
 			for (j = 1; j < splash[i].length; j++) {
 				scene.remove(splash[i][j][3]);
 			}
