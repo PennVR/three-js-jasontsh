@@ -63,7 +63,7 @@ var render = function() {
 			scene.remove(spherebuffer);
 			var splashes = [];
 			splashes[0] = 0;
-			for (var j = 0; j < Math.random()*3 + 7; j++){
+			for (var j = 0; j < Math.random()*3 + 3; j++){
 				splashes[j+1] = [Math.random() * 0.1 + fireworks[i][0], 
 				Math.random() * 0.2 + fireworks[i][1], 
 				Math.random() * 0.1 + fireworks[i][2],
@@ -89,9 +89,6 @@ var render = function() {
 				spherebuffer.position.y += splash[i][j][1];
 				spherebuffer.position.z += splash[i][j][2];
 			}
-		}
-		if (splash[i]) {
-			splash[i][0] += 1;
 		}
 	}
 
