@@ -58,8 +58,8 @@ var render = function() {
 		spherebuffer.position.x += fireworks[i][0];
 		spherebuffer.position.y += fireworks[i][1];
 		spherebuffer.position.z += fireworks[i][2];
-		fireworks[i][1] = fireworks[i][1] - 0.05;
-		if (spherebuffer.position.y > 40 || fireworks[i][1] <= 0) {
+		fireworks[i][1] = fireworks[i][1] - 0.02;
+		if (spherebuffer.position.y > 80 || fireworks[i][1] <= 0) {
 			scene.remove(spherebuffer);
 			var splashes = [];
 			splashes[0] = 0;
@@ -77,7 +77,7 @@ var render = function() {
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0] > 1000) {
+		if (splash[i][1] > 80 || splash[i][1] < 4) {
 			for (j = 1; j < splash[i].length; j++) {
 				scene.remove(splash[i][j][3]);
 			}
