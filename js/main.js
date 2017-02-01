@@ -15,7 +15,6 @@ sunSphere = new THREE.Mesh(
 sunSphere.position.y = - 700000;
 sunSphere.visible = false;
 scene.add( sunSphere );
-renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
