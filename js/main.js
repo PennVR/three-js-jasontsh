@@ -68,7 +68,10 @@ var render = function() {
 				Math.random() * 0.1 + fireworks[i][3].position.z,
 				new THREE.Mesh(new THREE.SphereBufferGeometry(-0.01 * fireworks[i][3].position.z, 30, 30), 
 					new THREE.MeshBasicMaterial({color: 0xaaaaaa}))];
-				scene.add(splashes[j+1][3]);
+				scene.add(splashes[j][3]);
+				splashes[j][3].position.x = fireworks[i][3].position.x;
+				splashes[j][3].position.y = fireworks[i][3].position.y;
+				splashes[j][3].position.z = fireworks[i][3].position.z;
 			}
 			fireworks.splice(fireworks[i], 1);
 			splash.push(splashes);
@@ -76,19 +79,19 @@ var render = function() {
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		// if (splash[i][0][3] && (splash[i][0][3].position.y > 80 || splash[i][0][3].position.y < 4)) {
-		// 	for (j = 0; j < splash[i].length; j++) {
-		// 		scene.remove(splash[i][j][3]);
-		// 	}
-		// 	splash.splice(splash[i], 1);
-		// } else {
+		if (splash[i][0][3] && (splash[i][0][3].position.y > 80 || splash[i][0][3].position.y < 4)) {
+			for (j = 0; j < splash[i].length; j++) {
+				scene.remove(splash[i][j][3]);
+			}
+			splash.splice(splash[i], 1);
+		} else {
 			for (j = 0; j < splash[i].length; j++) {
 				spherebuffer = splash[i][j][3];
 				spherebuffer.position.x += splash[i][j][0];
 				spherebuffer.position.y += splash[i][j][1];
 				spherebuffer.position.z += splash[i][j][2];
 			}
-		// }
+		}
 	}
 
 	renderer.render(scene, camera);
