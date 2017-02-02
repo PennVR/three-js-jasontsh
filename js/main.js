@@ -81,6 +81,8 @@ var render = function() {
 	for (i = 0; i < splash.length; i++) {
 		if (splash[i][0][1] < -1) {
 			for (j = 0; j < splash[i].length; j++) {
+				splash[i][j][3].material.dispose();
+				splash[i][j][3].geometry.dispose();
 				scene.remove(splash[i][j][3]);
 			}
 			splash.splice(splash[i], 1);
