@@ -44,9 +44,9 @@ var render = function() {
 		dy = 0.5;
 		z = Math.random() * - 110;
 		dz = Math.random();
-		var spheregeo = new THREE.SphereBufferGeometry(-0.012 * z, 30, 30);
+		var spheregeo = new THREE.SphereBufferGeometry(-0.007 * z, 30, 30);
 		z += camera.position.z;
-		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0xaaaaaa}));
+		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0x2277cc}));
 		sphere.position.x = x;
 		sphere.position.y = y;
 		sphere.position.z = z;
@@ -67,7 +67,7 @@ var render = function() {
 				Math.random(), 
 				Math.random(),
 				new THREE.Mesh(new THREE.SphereBufferGeometry(-0.003* fireworks[i][3].position.z, 30, 30), 
-					new THREE.MeshBasicMaterial({color: 0xaaaaaa}))];
+					new THREE.MeshBasicMaterial({color: 0xff0000}))];
 				scene.add(splashes[j][3], 100);
 				splashes[j][3].position.x = fireworks[i][3].position.x;
 				splashes[j][3].position.y = fireworks[i][3].position.y;
