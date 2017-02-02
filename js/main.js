@@ -85,7 +85,7 @@ var render = function() {
 			splash[i][splash[i].length- 1][4] <= 0) {
 			scene.remove(splash[i][splash[i].length-1][3]);
 			splash[i].pop();
-		} else if (splash[i][0][4] <= 0) {
+		} else if (splash[i] && splash[i][0] && splash[i][0][4] <= 0) {
 			for (j = 0; j < splash[i].length; j++) {
 				scene.remove(splash[i][j][3]);
 			}
