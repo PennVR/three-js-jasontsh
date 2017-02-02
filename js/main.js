@@ -124,7 +124,7 @@ loader.load("grass.jpg", function(texture){
 		new THREE.MeshBasicMaterial({color:0x00dddd, map: texture}));
 	scene.add(left_mountains);
 	left_mountains.position.x = -155;
-	left_mountains.position.z = 70;
+	left_mountains.position.z = -80;
 	left_mountains.rotation.x = -Math.PI / 2;
 });
 
@@ -148,7 +148,7 @@ loader.load("grass.jpg", function(texture){
 		new THREE.MeshBasicMaterial({color:0x00aaaa, map: texture}));
 	scene.add(right_mountains);
 	right_mountains.position.x = 155;
-	right_mountains.position.z = 70;
+	right_mountains.position.z = -80;
 	right_mountains.rotation.x = -Math.PI / 2;
 });
 
