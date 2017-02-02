@@ -79,7 +79,7 @@ var render = function() {
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0][3] && (splash[i][0][3].position.y > 80 || splash[i][0][3].position.y < 4)) {
+		if (splash[i][0][3] && splash[i][j][1] < -1) {
 			for (j = 0; j < splash[i].length; j++) {
 				scene.remove(splash[i][j][3]);
 			}
@@ -90,7 +90,7 @@ var render = function() {
 				spherebuffer.position.x += splash[i][j][0];
 				spherebuffer.position.y += splash[i][j][1];
 				spherebuffer.position.z += splash[i][j][2];
-				splash[i][j][1] -= 0.1;
+				splash[i][j][1] -= 0.03;
 			}
 		}
 	}
