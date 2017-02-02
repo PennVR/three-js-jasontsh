@@ -33,7 +33,7 @@ var render = function() {
 		camera.position.z -= 0.02;
 	}
 
-	prob = (10.0 - 3.0 * fireworks.length) / 100.0;
+	prob = (20.0 - 3.0 * fireworks.length) / 100.0;
 	if (Math.random() < prob && prob > 0) {
 		x = Math.random() * 300 + 20;
 		if (Math.random() > 0.5) {
@@ -44,9 +44,9 @@ var render = function() {
 		dy = 0.5;
 		z = Math.random() * - 110;
 		dz = Math.random();
-		var spheregeo = new THREE.SphereBufferGeometry(-0.007 * z, 30, 30);
+		var spheregeo = new THREE.SphereBufferGeometry(-0.005 * z, 30, 30);
 		z += camera.position.z;
-		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0x2277cc}));
+		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0x2288ee}));
 		sphere.position.x = x;
 		sphere.position.y = y;
 		sphere.position.z = z;
