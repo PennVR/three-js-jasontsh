@@ -79,19 +79,16 @@ var render = function() {
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0][1] < -1) {
-			for (j = 0; j < splash[i].length; j++) {
-				scene.remove(splash[i][j][3]);
-			}
+		if (splash[i][1] < -1) {
+			scene.remove(splash[i][3]);	
 			splash.splice(splash[i], 1);
+			i--;
 		} else {
-			for (j = 0; j < splash[i].length; j++) {
-				spherebuffer = splash[i][j][3];
-				spherebuffer.position.x += splash[i][j][0];
-				spherebuffer.position.y += splash[i][j][1];
-				spherebuffer.position.z += splash[i][j][2];
-				splash[i][j][1] -= 0.03;
-			}
+			spherebuffer = splash[i][3];
+			spherebuffer.position.x += splash[i][0];
+			spherebuffer.position.y += splash[i][1];
+			spherebuffer.position.z += splash[i][2];
+			splash[i][1] -= 0.03;
 		}
 	}
 
