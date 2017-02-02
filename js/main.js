@@ -62,7 +62,7 @@ var render = function() {
 		if (spherebuffer.position.y > 80 || fireworks[i][1] <= 0) {
 			scene.remove(spherebuffer);
 			var splashes = [];
-			for (var j = 0; j < Math.random()*3 + 5; j++){
+			for (var j = 0; j < Math.random()*3 + 3; j++){
 				splashes[j] = [Math.random() * 0.1, 
 				Math.random(), 
 				Math.random(),
@@ -78,14 +78,12 @@ var render = function() {
 		}
 	}
 
-	var race;
-	for (var k = 0; k < splash.length; k++) {
-		if (splash[k][0][3] && splash[k][0][1] < -1) {
-			race = splash[k];
-			for (var l = 0; l < race.length; l++) {
-				scene.remove(race[l][3]);
+	for (i = 0; i < splash.length; i++) {
+		if (splash[i][0][1] < -1) {
+			for (j = 0; j < splash[i].length; j++) {
+				scene.remove(splash[i][j][3]);
 			}
-			splash.splice(race, 1);
+			splash.splice(splash[i], 1);
 		} else {
 			for (j = 0; j < splash[i].length; j++) {
 				spherebuffer = splash[i][j][3];
