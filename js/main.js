@@ -90,7 +90,7 @@ var render = function() {
 				spherebuffer.position.x += splash[i][j][0];
 				spherebuffer.position.y += splash[i][j][1];
 				spherebuffer.position.z += splash[i][j][2];
-				splash[i][j][1] -= 1;
+				splash[i][j][1] -= 0.5;
 			}
 		}
 	}
