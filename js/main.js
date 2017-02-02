@@ -73,7 +73,7 @@ var render = function() {
 				splashes[j][3].position.y = fireworks[i][3].position.y;
 				splashes[j][3].position.z = fireworks[i][3].position.z;
 			}
-			splashes.push([0, 0, 0, new THREE.PointLight(0xffffff, 200), 30]);
+			splashes.push([0, 0, 0, new THREE.PointLight(0xffffff, 500), 70]);
 			scene.add(splashes[splashes.length-1][3]);
 			fireworks.splice(fireworks[i], 1);
 			splash.push(splashes);
