@@ -15,7 +15,7 @@ scene.add(light);
 // sunSphere.position.y = - 700000;
 // sunSphere.visible = false;
 // scene.add( sunSphere );
-// renderer.setClearColor(0x3399ff);
+renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -73,7 +73,7 @@ var render = function() {
 				splashes[j][3].position.y = fireworks[i][3].position.y;
 				splashes[j][3].position.z = fireworks[i][3].position.z;
 			}
-			splashes.push([0, 0, 0, new THREE.PointLight(), 10]);
+			splashes.push([0, 0, 0, new THREE.PointLight(0xffffff, 200), 30]);
 			scene.add(splashes[splashes.length-1][3]);
 			fireworks.splice(fireworks[i], 1);
 			splash.push(splashes);
