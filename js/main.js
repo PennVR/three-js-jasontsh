@@ -73,13 +73,18 @@ var render = function() {
 				splashes[j][3].position.y = fireworks[i][3].position.y;
 				splashes[j][3].position.z = fireworks[i][3].position.z;
 			}
+			splashes.push([0, 0, 0, new THREE.PointLight(), 10]);
+			scene.add(splashes[splashes.length-1][3]);
 			fireworks.splice(fireworks[i], 1);
 			splash.push(splashes);
 		}
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0][4] <= 0) {
+		if (splash[i][splash[i].length-1][4] <= 0) {
+			scene.remove(splash[i][splash[i].length-1][3]);
+			splash[i].pop();
+		} else if (splash[i][0][4] <= 0) {
 			for (j = 0; j < splash[i].length; j++) {
 				scene.remove(splash[i][j][3]);
 			}
