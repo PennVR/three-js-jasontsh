@@ -92,7 +92,9 @@ var render = function() {
 				spherebuffer.position.y += splash[i][j][1];
 				spherebuffer.position.z += splash[i][j][2];
 				splash[i][j][1] -= 0.02;
+				splash[i][j][4] -= 1;
 			}
+
 		}
 	}
 
