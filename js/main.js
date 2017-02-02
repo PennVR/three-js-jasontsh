@@ -67,7 +67,7 @@ var render = function() {
 				Math.random(), 
 				Math.random(),
 				new THREE.Mesh(new THREE.SphereBufferGeometry(-0.003* fireworks[i][3].position.z, 30, 30), 
-					new THREE.MeshBasicMaterial({color: 0xaaaaaa}))];
+					new THREE.MeshBasicMaterial({color: 0xaaaaaa})), 100];
 				scene.add(splashes[j][3]);
 				splashes[j][3].position.x = fireworks[i][3].position.x;
 				splashes[j][3].position.y = fireworks[i][3].position.y;
@@ -79,10 +79,8 @@ var render = function() {
 	}
 
 	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0][1] < -1) {
+		if (splash[i][0][4] <= 0) {
 			for (j = 0; j < splash[i].length; j++) {
-				splash[i][j][3].material.dispose();
-				splash[i][j][3].geometry.dispose();
 				scene.remove(splash[i][j][3]);
 			}
 			splash.splice(splash[i], 1);
@@ -94,6 +92,7 @@ var render = function() {
 				spherebuffer.position.y += splash[i][j][1];
 				spherebuffer.position.z += splash[i][j][2];
 				splash[i][j][1] -= 0.03;
+				splash[i][j][4] -= 1;
 			}
 		}
 	}
