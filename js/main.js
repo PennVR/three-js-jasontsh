@@ -29,7 +29,7 @@ var x, y, z, dx, dy;
 var spherebuffer;
 var render = function() {
 	requestAnimationFrame(render);
-	if (camera.position.z > -290){
+	if (camera.position.z > -260){
 		camera.position.z -= 0.02;
 	}
 
