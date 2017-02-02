@@ -6,15 +6,15 @@ var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 light.position.set( 0.5, 30, 0.75 );
 scene.add(light);
 
-var sky = new THREE.Sky();
-scene.add(sky.mesh);
-sunSphere = new THREE.Mesh(
-	new THREE.SphereBufferGeometry( 20000, 16, 8 ),
-	new THREE.MeshBasicMaterial( { color: 0xffffff } )
-);
-sunSphere.position.y = - 700000;
-sunSphere.visible = false;
-scene.add( sunSphere );
+// var sky = new THREE.Sky();
+// scene.add(sky.mesh);
+// sunSphere = new THREE.Mesh(
+// 	new THREE.SphereBufferGeometry( 20000, 16, 8 ),
+// 	new THREE.MeshBasicMaterial( { color: 0xffffff } )
+// );
+// sunSphere.position.y = - 700000;
+// sunSphere.visible = false;
+// scene.add( sunSphere );
 renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -44,7 +44,7 @@ var render = function() {
 		dy = 0.5;
 		z = Math.random() * - 110;
 		dz = Math.random();
-		var spheregeo = new THREE.SphereBufferGeometry(-0.015 * z, 30, 30);
+		var spheregeo = new THREE.SphereBufferGeometry(-0.012 * z, 30, 30);
 		z += camera.position.z;
 		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0xaaaaaa}));
 		sphere.position.x = x;
@@ -62,7 +62,7 @@ var render = function() {
 		if (spherebuffer.position.y > 80 || fireworks[i][1] <= 0) {
 			scene.remove(spherebuffer);
 			var splashes = [];
-			for (var j = 0; j < Math.random()*3 + 3; j++){
+			for (var j = 0; j < Math.random()*3 + 5; j++){
 				splashes[j] = [Math.random() * 0.1, 
 				Math.random(), 
 				Math.random(),
@@ -79,11 +79,11 @@ var render = function() {
 	}
 
 	var race;
-	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0][3] && splash[i][0][1] < -1) {
-			race = splash[i];
-			for (j = 0; j < splash[i].length; j++) {
-				scene.remove(race[j][3]);
+	for (var k = 0; k < splash.length; k++) {
+		if (splash[k][0][3] && splash[k][0][1] < -1) {
+			race = splash[k];
+			for (var l = 0; l < race.length; l++) {
+				scene.remove(race[l][3]);
 			}
 			splash.splice(race, 1);
 		} else {
