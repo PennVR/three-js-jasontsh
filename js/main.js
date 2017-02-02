@@ -78,12 +78,14 @@ var render = function() {
 		}
 	}
 
+	var race;
 	for (i = 0; i < splash.length; i++) {
 		if (splash[i][0][3] && splash[i][0][1] < -1) {
+			race = splash[i];
 			for (j = 0; j < splash[i].length; j++) {
-				scene.remove(splash[i][j][3]);
+				scene.remove(race[j][3]);
 			}
-			splash.splice(splash[i], 1);
+			splash.splice(race, 1);
 		} else {
 			for (j = 0; j < splash[i].length; j++) {
 				spherebuffer = splash[i][j][3];
