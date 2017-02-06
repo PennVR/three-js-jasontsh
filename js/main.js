@@ -1,6 +1,7 @@
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100);
 var renderer = new THREE.WebGLRenderer();
+var controls = new THREE.VRControls( camera );
 var effect = new THREE.VREffect( renderer );
 
 var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
@@ -90,7 +91,7 @@ var render = function() {
 
 		}
 	}
-
+	controls.update();
 	effect.render(scene, camera);
 };
 
