@@ -1,5 +1,6 @@
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+var group = new THREE.Group();
 var renderer = new THREE.WebGLRenderer();
 var controls = new THREE.VRControls( camera );
 var effect = new THREE.VREffect( renderer );
@@ -31,17 +32,19 @@ renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-camera.position.z = 5;
-camera.position.y = 4;
 
+group.position.z = 5;
+group.position.y = 4;
+group.add(camera);
+scene.add(group);
 var fireworks = [];
 var splash = [];
 var x, y, z, dx, dy;
 var spherebuffer;
 var render = function() {
 	effect.requestAnimationFrame(render);
-	if (camera.position.z > -260){
-		camera.position.set(camera.position.x, camera.position.y, camera.position.z-1);
+	if (group.position.z > -260){
+		group.position.z -= 0.02;
 	}
 
 	generateFirework();
