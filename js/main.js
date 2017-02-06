@@ -127,7 +127,7 @@ loader.load("grass.jpg", function(texture){
 	var left_mountains = new THREE.Mesh(plane, 
 		new THREE.MeshBasicMaterial({color:0x00dddd, map: texture}));
 	scene.add(left_mountains);
-	left_mountains.position.x = -155;
+	left_mountains.position.x = -152.5;
 	left_mountains.position.z = -80;
 	left_mountains.rotation.x = -Math.PI / 2;
 });
@@ -151,7 +151,7 @@ loader.load("grass.jpg", function(texture){
 	var right_mountains = new THREE.Mesh(right_plane, 
 		new THREE.MeshBasicMaterial({color:0x00aaaa, map: texture}));
 	scene.add(right_mountains);
-	right_mountains.position.x = 155;
+	right_mountains.position.x = 152.5;
 	right_mountains.position.z = -80;
 	right_mountains.rotation.x = -Math.PI / 2;
 });
@@ -163,7 +163,7 @@ loader.load("grass.jpg", function(texture) {
 		new THREE.MeshBasicMaterial({map:texture}));
 	scene.add(path);
 	path.position.z = -80;
-	path.position.y = -5;
+	path.position.y = -2;
 	path.rotation.x = -Math.PI/2;
 });
 
