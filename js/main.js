@@ -163,6 +163,7 @@ loader.load("grass.jpg", function(texture) {
 		new THREE.MeshBasicMaterial({map:texture}));
 	scene.add(path);
 	path.position.z = -80;
+	path.position.y = -5;
 	path.rotation.x = -Math.PI/2;
 });
 
