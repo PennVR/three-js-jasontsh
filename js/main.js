@@ -36,7 +36,6 @@ camera.position.y = 4;
 
 var fireworks = [];
 var splash = [];
-var prob;
 var x, y, z, dx, dy;
 var spherebuffer;
 var render = function() {
@@ -45,73 +44,8 @@ var render = function() {
 		camera.position.z -= 0.02;
 	}
 
-	prob = (30.0 - 2.0 * fireworks.length) / 100.0;
-	if (Math.random() < prob && prob > 0) {
-		x = Math.random() * 300 + 20;
-		if (Math.random() > 0.5) {
-			x *= -1;
-		}
-		y = Math.random() * 2 + 14;
-		dx = Math.random();
-		dy = 0.7;
-		z = Math.random() * - 110;
-		if (Math.random() > 0.5) {
-			z *= -1;
-		}
-		dz = Math.random();
-		var spheregeo = new THREE.SphereBufferGeometry(-0.005 * z, 30, 30);
-		z += camera.position.z;
-		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0x2288ee}));
-		sphere.position.x = x;
-		sphere.position.y = y;
-		sphere.position.z = z;
-		scene.add(sphere);
-		fireworks.push([dx, dy, dz, sphere]);
-	}
-	for (var i = 0; i < fireworks.length; i++) {
-		spherebuffer = fireworks[i][3];
-		spherebuffer.position.x += fireworks[i][0];
-		spherebuffer.position.y += fireworks[i][1];
-		spherebuffer.position.z += fireworks[i][2];
-		fireworks[i][1] = fireworks[i][1] - 0.02;
-		if (spherebuffer.position.y > 80 || fireworks[i][1] <= 0) {
-			scene.remove(spherebuffer);
-			var splashes = [];
-			for (var j = 0; j < Math.random()*3 + 3; j++){
-				splashes[j] = [Math.random() * 0.1, 
-				Math.random(), 
-				Math.random(),
-				new THREE.Mesh(new THREE.SphereBufferGeometry(-0.003* fireworks[i][3].position.z, 30, 30), 
-					new THREE.MeshBasicMaterial({color: 0xffff00})), 80];
-				scene.add(splashes[j][3]);
-				splashes[j][3].position.x = fireworks[i][3].position.x;
-				splashes[j][3].position.y = fireworks[i][3].position.y;
-				splashes[j][3].position.z = fireworks[i][3].position.z;
-			}
-			fireworks.splice(fireworks[i], 1);
-			splash.push(splashes);
-		}
-	}
-
-	for (i = 0; i < splash.length; i++) {
-		if (splash[i][0][4] <= 0) {
-			for (j = 0; j < splash[i].length; j++) {
-				scene.remove(splash[i][j][3]);
-			}
-			splash.splice(splash[i], 1);
-			i--;
-		} else {
-			for (j = 0; j < splash[i].length; j++) {
-				spherebuffer = splash[i][j][3];
-				spherebuffer.position.x += splash[i][j][0];
-				spherebuffer.position.y += splash[i][j][1];
-				spherebuffer.position.z += splash[i][j][2];
-				splash[i][j][1] -= 0.02;
-				splash[i][j][4] -= 1;
-			}
-
-		}
-	}
+	generateFirework();
+	updateSplashes();
 	controls.update();
 	effect.render(scene, camera);
 };
@@ -167,7 +101,7 @@ loader.load("grass.jpg", function(texture){
 	right_mountains.rotation.x = -Math.PI / 2;
 });
 
-var road = new THREE.PlaneGeometry(10, 300, 30, 30);
+var road = new THREE.PlaneGeometry(20, 300, 30, 30);
 
 loader.load("grass.jpg", function(texture) {
 	var path = new THREE.Mesh(road, 
@@ -180,6 +114,79 @@ loader.load("grass.jpg", function(texture) {
 
 
 render();
+
+function generateFirework() {
+	prob = (30.0 - 2.0 * fireworks.length) / 100.0;
+	if (Math.random() < prob && prob > 0) {
+		x = Math.random() * 300 + 20;
+		if (Math.random() > 0.5) {
+			x *= -1;
+		}
+		y = Math.random() * 2 + 14;
+		dx = Math.random();
+		dy = 0.7;
+		z = Math.random() * - 110;
+		if (Math.random() > 0.5) {
+			z *= -1;
+		}
+		dz = Math.random();
+		var spheregeo = new THREE.SphereBufferGeometry(-0.005 * z, 30, 30);
+		z += camera.position.z;
+		var sphere = new THREE.Mesh(spheregeo, new THREE.MeshBasicMaterial({color: 0x2288ee}));
+		sphere.position.x = x;
+		sphere.position.y = y;
+		sphere.position.z = z;
+		scene.add(sphere);
+		fireworks.push([dx, dy, dz, sphere]);
+	}
+}
+
+function updateSplashes() {
+	for (var i = 0; i < fireworks.length; i++) {
+		spherebuffer = fireworks[i][3];
+		spherebuffer.position.x += fireworks[i][0];
+		spherebuffer.position.y += fireworks[i][1];
+		spherebuffer.position.z += fireworks[i][2];
+		fireworks[i][1] = fireworks[i][1] - 0.02;
+		if (spherebuffer.position.y > 80 || fireworks[i][1] <= 0) {
+			scene.remove(spherebuffer);
+			var splashes = [];
+			for (var j = 0; j < Math.random()*3 + 3; j++){
+				splashes[j] = [Math.random() * 0.1, 
+				Math.random(), 
+				Math.random(),
+				new THREE.Mesh(new THREE.SphereBufferGeometry(-0.003* fireworks[i][3].position.z, 30, 30), 
+					new THREE.MeshBasicMaterial({color: 0xffff00})), 80];
+				scene.add(splashes[j][3]);
+				splashes[j][3].position.x = fireworks[i][3].position.x;
+				splashes[j][3].position.y = fireworks[i][3].position.y;
+				splashes[j][3].position.z = fireworks[i][3].position.z;
+			}
+			fireworks.splice(fireworks[i], 1);
+			splash.push(splashes);
+		}
+	}
+
+	for (i = 0; i < splash.length; i++) {
+		if (splash[i][0][4] <= 0) {
+			for (j = 0; j < splash[i].length; j++) {
+				scene.remove(splash[i][j][3]);
+			}
+			splash.splice(splash[i], 1);
+			i--;
+		} else {
+			for (j = 0; j < splash[i].length; j++) {
+				spherebuffer = splash[i][j][3];
+				spherebuffer.position.x += splash[i][j][0];
+				spherebuffer.position.y += splash[i][j][1];
+				spherebuffer.position.z += splash[i][j][2];
+				splash[i][j][1] -= 0.02;
+				splash[i][j][4] -= 1;
+			}
+
+		}
+	}
+}
 function generateArray() {
 	var sample_size = 256;
 	var bconst = 0x1000;
