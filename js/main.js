@@ -21,7 +21,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 camera.position.z = 5;
-camera.position.y = 2;
+camera.position.y = 4;
 
 var fireworks = [];
 var splash = [];
@@ -40,7 +40,7 @@ var render = function() {
 		if (Math.random() > 0.5) {
 			x *= -1;
 		}
-		y = Math.random() * 2 + 7;
+		y = Math.random() * 2 + 14;
 		dx = Math.random();
 		dy = 0.7;
 		z = Math.random() * - 110;
@@ -114,7 +114,7 @@ var plane = new THREE.PlaneGeometry(300, 300, 256, 256);
 for (var i = 0; i < plane.vertices.length; i++) {
 	if (plane.vertices[i].x < 149.5) {
 		plane.vertices[i].z = noise(Math.abs(plane.vertices[i].x)*256.0/10.0, 
-			Math.abs(plane.vertices[i].y)*256.0/1000.0) * 7;
+			Math.abs(plane.vertices[i].y)*256.0/1000.0) * 14;
 		if (plane.vertices[i].z < 0) {
 			plane.vertices[i].z = 0;
 		}
@@ -139,7 +139,7 @@ var right_plane = new THREE.PlaneGeometry(300, 300, 256, 256);
 for (var i = 0; i < right_plane.vertices.length; i++) {
 	if (right_plane.vertices[i].x > -149.5) {
 		right_plane.vertices[i].z = noise(Math.abs(right_plane.vertices[i].x)*256.0/100.0, 
-			Math.abs(right_plane.vertices[i].y)*256.0/1000.0) * 7;;
+			Math.abs(right_plane.vertices[i].y)*256.0/1000.0) * 14;
 		if (right_plane.vertices[i].z < 0) {
 			right_plane.vertices[i].z = 0;
 		}
@@ -154,6 +154,16 @@ loader.load("grass.jpg", function(texture){
 	right_mountains.position.x = 155;
 	right_mountains.position.z = -80;
 	right_mountains.rotation.x = -Math.PI / 2;
+});
+
+var road = new THREE.PlaneGeometry(10, 300, 30, 30);
+
+loader.load("grass.jpg", function(texture) {
+	var path = new THREE.Mesh(road, 
+		new THREE.MeshBasicMaterial({map:texture}));
+	scene.add(path);
+	path.position.z = -80;
+	path.rotation.x = -Math.PI/2;
 });
 
 
