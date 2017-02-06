@@ -6,6 +6,11 @@ var effect = new THREE.VREffect( renderer );
 if ( WEBVR.isAvailable() === true ) {
 	document.body.appendChild( WEBVR.getButton( effect ) );
 }
+window.addEventListener( 'resize', function () {
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+}, false );
 var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 light.position.set( 0.5, 30, 0.75 );
 scene.add(light);
