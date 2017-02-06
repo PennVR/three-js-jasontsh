@@ -1,5 +1,5 @@
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100);
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 var renderer = new THREE.WebGLRenderer();
 var controls = new THREE.VRControls( camera );
 var effect = new THREE.VREffect( renderer );
@@ -41,7 +41,7 @@ var spherebuffer;
 var render = function() {
 	effect.requestAnimationFrame(render);
 	if (camera.position.z > -260){
-		camera.position.z -= 0.1;
+		camera.position.z -= 1;
 	}
 
 	generateFirework();
