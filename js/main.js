@@ -34,7 +34,7 @@ var render = function() {
 		camera.position.z -= 0.02;
 	}
 
-	prob = (20.0 - 3.0 * fireworks.length) / 100.0;
+	prob = (30.0 - 2.0 * fireworks.length) / 100.0;
 	if (Math.random() < prob && prob > 0) {
 		x = Math.random() * 300 + 20;
 		if (Math.random() > 0.5) {
@@ -44,6 +44,9 @@ var render = function() {
 		dx = Math.random();
 		dy = 0.7;
 		z = Math.random() * - 110;
+		if (Math.random() > 0.5) {
+			z *= -1;
+		}
 		dz = Math.random();
 		var spheregeo = new THREE.SphereBufferGeometry(-0.005 * z, 30, 30);
 		z += camera.position.z;
