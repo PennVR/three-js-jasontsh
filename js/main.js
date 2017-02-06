@@ -41,7 +41,7 @@ var spherebuffer;
 var render = function() {
 	effect.requestAnimationFrame(render);
 	if (camera.position.z > -260){
-		camera.position.z -= 0.02;
+		camera.position.z -= 0.1;
 	}
 
 	generateFirework();
@@ -73,6 +73,7 @@ loader.load("grass.jpg", function(texture){
 		new THREE.MeshBasicMaterial({color:0x00dddd, map: texture}));
 	scene.add(left_mountains);
 	left_mountains.position.x = -152.5;
+	left_mountains.position.y = -2;
 	left_mountains.position.z = -80;
 	left_mountains.rotation.x = -Math.PI / 2;
 });
@@ -98,6 +99,7 @@ loader.load("grass.jpg", function(texture){
 	scene.add(right_mountains);
 	right_mountains.position.x = 152.5;
 	right_mountains.position.z = -80;
+	right_mountains.position.y = -2;
 	right_mountains.rotation.x = -Math.PI / 2;
 });
 
