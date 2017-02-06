@@ -3,6 +3,9 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeigh
 var renderer = new THREE.WebGLRenderer();
 var controls = new THREE.VRControls( camera );
 var effect = new THREE.VREffect( renderer );
+if ( WEBVR.isAvailable() === false ) {
+	document.body.appendChild( WEBVR.getMessage() );
+}
 if ( navigator.getVRDisplays ) {
 	navigator.getVRDisplays()
 		.then( function ( displays ) {
