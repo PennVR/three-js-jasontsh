@@ -1,20 +1,13 @@
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100);
 var renderer = new THREE.WebGLRenderer();
+var effect = new THREE.VREffect( renderer );
 
 var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 light.position.set( 0.5, 30, 0.75 );
 scene.add(light);
 
-// var sky = new THREE.Sky();
-// scene.add(sky.mesh);
-// sunSphere = new THREE.Mesh(
-// 	new THREE.SphereBufferGeometry( 20000, 16, 8 ),
-// 	new THREE.MeshBasicMaterial( { color: 0xffffff } )
-// );
-// sunSphere.position.y = - 700000;
-// sunSphere.visible = false;
-// scene.add( sunSphere );
+
 renderer.setClearColor(0x3399ff);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -28,7 +21,7 @@ var prob;
 var x, y, z, dx, dy;
 var spherebuffer;
 var render = function() {
-	requestAnimationFrame(render);
+	effect.requestAnimationFrame(render);
 	if (camera.position.z > -260){
 		camera.position.z -= 0.02;
 	}
@@ -98,7 +91,7 @@ var render = function() {
 		}
 	}
 
-	renderer.render(scene, camera);
+	effect.render(scene, camera);
 };
 
 var p = [];
