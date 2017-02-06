@@ -103,7 +103,7 @@ loader.load("grass.jpg", function(texture){
 	right_mountains.rotation.x = -Math.PI / 2;
 });
 
-var road = new THREE.PlaneGeometry(20, 300, 30, 30);
+var road = new THREE.PlaneGeometry(10, 300, 30, 30);
 
 loader.load("grass.jpg", function(texture) {
 	var path = new THREE.Mesh(road, 
