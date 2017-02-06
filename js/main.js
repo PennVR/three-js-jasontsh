@@ -3,7 +3,15 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeigh
 var renderer = new THREE.WebGLRenderer();
 var controls = new THREE.VRControls( camera );
 var effect = new THREE.VREffect( renderer );
-if ( WEBVR.isAvailable() === true ) {
+if ( navigator.getVRDisplays ) {
+	navigator.getVRDisplays()
+		.then( function ( displays ) {
+			effect.setVRDisplay( displays[ 0 ] );
+			controls.setVRDisplay( displays[ 0 ] );
+		} )
+		.catch( function () {
+			// no displays
+		} );
 	document.body.appendChild( WEBVR.getButton( effect ) );
 }
 window.addEventListener( 'resize', function () {
