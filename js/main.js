@@ -3,7 +3,9 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeigh
 var renderer = new THREE.WebGLRenderer();
 var controls = new THREE.VRControls( camera );
 var effect = new THREE.VREffect( renderer );
-
+if ( WEBVR.isAvailable() === true ) {
+	document.body.appendChild( WEBVR.getButton( effect ) );
+}
 var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 light.position.set( 0.5, 30, 0.75 );
 scene.add(light);
