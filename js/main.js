@@ -41,7 +41,7 @@ var spherebuffer;
 var render = function() {
 	effect.requestAnimationFrame(render);
 	if (camera.position.z > -260){
-		camera.position.z -= 1;
+		camera.position.set(camera.position.x, camera.position.y, camera.position.z-1);
 	}
 
 	generateFirework();
