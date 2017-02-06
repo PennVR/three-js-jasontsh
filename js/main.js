@@ -43,7 +43,7 @@ var x, y, z, dx, dy;
 var spherebuffer;
 var render = function() {
 	effect.requestAnimationFrame(render);
-	if (group.position.z > -260){
+	if (group.position.z > -190){
 		group.position.z -= 0.02;
 	}
 
